@@ -1,0 +1,726 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tacosauce.ai Preview</title>
+    <meta
+      name="description"
+      content="A lightweight Tacosauce.ai product preview for validating the concept with food truck owners."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #f5f5f4;
+        --panel: rgba(255, 255, 255, 0.78);
+        --panel-strong: rgba(255, 255, 255, 0.92);
+        --text: #18181b;
+        --muted: #52525b;
+        --line: rgba(39, 39, 42, 0.1);
+        --yellow: #facc15;
+        --yellow-deep: #ca8a04;
+        --red: #dc2626;
+        --red-deep: #991b1b;
+        --shadow: 0 24px 80px rgba(24, 24, 27, 0.12);
+        --radius-xl: 28px;
+        --radius-lg: 20px;
+        --radius-md: 14px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Inter", system-ui, sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at top left, rgba(250, 204, 21, 0.22), transparent 28%),
+          radial-gradient(circle at top right, rgba(220, 38, 38, 0.16), transparent 24%),
+          linear-gradient(180deg, #fffdf7 0%, var(--bg) 45%, #ebe7df 100%);
+      }
+
+      a {
+        color: inherit;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      .page {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 28px 0 64px;
+      }
+
+      .hero {
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(202, 138, 4, 0.16);
+        border-radius: var(--radius-xl);
+        padding: 32px;
+        background:
+          linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(255, 251, 235, 0.88)),
+          linear-gradient(135deg, rgba(250, 204, 21, 0.18), rgba(220, 38, 38, 0.08));
+        box-shadow: var(--shadow);
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: auto -10% -35% auto;
+        width: 320px;
+        height: 320px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(220, 38, 38, 0.18), transparent 65%);
+        pointer-events: none;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 18px;
+        padding: 8px 12px;
+        border-radius: 999px;
+        border: 1px solid rgba(202, 138, 4, 0.22);
+        background: rgba(255, 255, 255, 0.7);
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .eyebrow::before {
+        content: "";
+        width: 9px;
+        height: 9px;
+        border-radius: 999px;
+        background: linear-gradient(135deg, var(--yellow), var(--red));
+      }
+
+      h1,
+      h2,
+      h3 {
+        margin: 0;
+        font-family: "Space Grotesk", system-ui, sans-serif;
+        letter-spacing: -0.04em;
+      }
+
+      h1 {
+        max-width: 10ch;
+        font-size: clamp(2.6rem, 6vw, 5.4rem);
+        line-height: 0.95;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+        gap: 28px;
+        align-items: end;
+      }
+
+      .hero-copy p {
+        max-width: 58ch;
+        margin: 18px 0 0;
+        font-size: 1.05rem;
+        line-height: 1.7;
+        color: var(--muted);
+      }
+
+      .hero-points {
+        display: grid;
+        gap: 12px;
+      }
+
+      .hero-card {
+        padding: 18px 18px 16px;
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--line);
+        background: var(--panel-strong);
+      }
+
+      .hero-card strong {
+        display: block;
+        margin-bottom: 6px;
+        font-size: 0.95rem;
+      }
+
+      .hero-card span {
+        color: var(--muted);
+        line-height: 1.55;
+      }
+
+      .section {
+        margin-top: 26px;
+        padding: 24px;
+        border-radius: var(--radius-xl);
+        border: 1px solid var(--line);
+        background: var(--panel);
+        backdrop-filter: blur(18px);
+        box-shadow: var(--shadow);
+      }
+
+      .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        gap: 18px;
+        margin-bottom: 20px;
+      }
+
+      .section-header p {
+        max-width: 60ch;
+        margin: 10px 0 0;
+        color: var(--muted);
+        line-height: 1.65;
+      }
+
+      .viewer-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.55fr);
+        gap: 20px;
+      }
+
+      .stage {
+        border-radius: 26px;
+        border: 1px solid rgba(39, 39, 42, 0.08);
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(250, 250, 249, 0.94));
+        overflow: hidden;
+      }
+
+      .stage-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        padding: 16px 18px;
+        border-bottom: 1px solid rgba(39, 39, 42, 0.08);
+      }
+
+      .stage-top p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.94rem;
+      }
+
+      .stage-frame {
+        padding: 16px;
+      }
+
+      .stage-frame img {
+        width: 100%;
+        height: auto;
+        border-radius: 18px;
+        border: 1px solid rgba(39, 39, 42, 0.08);
+        background: white;
+      }
+
+      .viewer-panel {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .info-card,
+      .thumb-card,
+      .prompt-card {
+        border-radius: 22px;
+        border: 1px solid rgba(39, 39, 42, 0.08);
+        background: rgba(255, 255, 255, 0.88);
+        padding: 18px;
+      }
+
+      .kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 12px;
+        color: var(--red-deep);
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .kicker::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: var(--red);
+      }
+
+      .info-card h3 {
+        font-size: clamp(1.4rem, 2vw, 1.8rem);
+        line-height: 1.05;
+      }
+
+      .info-card p,
+      .prompt-card p {
+        margin: 12px 0 0;
+        color: var(--muted);
+        line-height: 1.65;
+      }
+
+      .chip-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 16px;
+      }
+
+      .chip {
+        padding: 8px 11px;
+        border-radius: 999px;
+        border: 1px solid rgba(202, 138, 4, 0.18);
+        background: rgba(254, 249, 195, 0.7);
+        font-size: 0.85rem;
+        font-weight: 600;
+      }
+
+      .controls {
+        display: flex;
+        gap: 10px;
+        margin-top: 18px;
+      }
+
+      button {
+        appearance: none;
+        border: 0;
+        cursor: pointer;
+        font: inherit;
+      }
+
+      .button {
+        flex: 1;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        min-height: 46px;
+        padding: 0 16px;
+        border-radius: 14px;
+        font-weight: 700;
+        transition:
+          transform 160ms ease,
+          box-shadow 160ms ease,
+          background 160ms ease,
+          color 160ms ease;
+      }
+
+      .button:hover {
+        transform: translateY(-1px);
+      }
+
+      .button:focus-visible,
+      .thumb:focus-visible {
+        outline: 3px solid rgba(220, 38, 38, 0.22);
+        outline-offset: 2px;
+      }
+
+      .button-primary {
+        color: #111827;
+        background: linear-gradient(135deg, #fde047, #fca5a5);
+        box-shadow: 0 16px 40px rgba(220, 38, 38, 0.18);
+      }
+
+      .button-secondary {
+        color: var(--text);
+        background: rgba(244, 244, 245, 0.92);
+        border: 1px solid rgba(39, 39, 42, 0.08);
+      }
+
+      .thumb-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        margin-top: 14px;
+      }
+
+      .thumb {
+        padding: 0;
+        overflow: hidden;
+        text-align: left;
+        border-radius: 16px;
+        border: 1px solid rgba(39, 39, 42, 0.08);
+        background: white;
+        transition:
+          transform 160ms ease,
+          border-color 160ms ease,
+          box-shadow 160ms ease;
+      }
+
+      .thumb:hover {
+        transform: translateY(-2px);
+        border-color: rgba(220, 38, 38, 0.28);
+        box-shadow: 0 18px 28px rgba(24, 24, 27, 0.12);
+      }
+
+      .thumb.active {
+        border-color: rgba(220, 38, 38, 0.42);
+        box-shadow: 0 20px 36px rgba(220, 38, 38, 0.16);
+      }
+
+      .thumb img {
+        aspect-ratio: 16 / 11;
+        width: 100%;
+        object-fit: cover;
+        background: #fafaf9;
+      }
+
+      .thumb-copy {
+        padding: 10px 11px 12px;
+      }
+
+      .thumb-copy strong {
+        display: block;
+        font-size: 0.92rem;
+      }
+
+      .thumb-copy span {
+        display: block;
+        margin-top: 4px;
+        color: var(--muted);
+        font-size: 0.83rem;
+        line-height: 1.45;
+      }
+
+      .feedback-list {
+        margin: 14px 0 0;
+        padding: 0;
+        list-style: none;
+        display: grid;
+        gap: 10px;
+      }
+
+      .feedback-list li {
+        padding: 12px 14px;
+        border-radius: 14px;
+        background: rgba(244, 244, 245, 0.85);
+        color: var(--muted);
+        line-height: 1.55;
+      }
+
+      .feedback-list strong {
+        color: var(--text);
+      }
+
+      .footer-note {
+        margin-top: 18px;
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      @media (max-width: 980px) {
+        .hero-grid,
+        .viewer-grid {
+          grid-template-columns: 1fr;
+        }
+
+        h1 {
+          max-width: 12ch;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .page {
+          width: min(100% - 20px, 1180px);
+          padding-top: 12px;
+          padding-bottom: 32px;
+        }
+
+        .hero,
+        .section {
+          padding: 18px;
+          border-radius: 22px;
+        }
+
+        .stage-top,
+        .stage-frame,
+        .info-card,
+        .thumb-card,
+        .prompt-card {
+          padding: 14px;
+        }
+
+        .stage-top {
+          align-items: start;
+          flex-direction: column;
+        }
+
+        .thumb-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .controls {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <section class="hero">
+        <div class="eyebrow">Concept Preview</div>
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <h1>Tacosauce.ai for food truck operators.</h1>
+            <p>
+              This is a lightweight walkthrough of a software concept built around the day-to-day
+              realities of running a food truck: scheduling, catering, local rules, and smarter
+              decisions about where to be and what to prep.
+            </p>
+          </div>
+
+          <div class="hero-points">
+            <div class="hero-card">
+              <strong>What this is</strong>
+              <span>A visual preview of the product direction, using early UI mockups instead of a full prototype.</span>
+            </div>
+            <div class="hero-card">
+              <strong>What I’m validating</strong>
+              <span>Whether these workflows solve real pain for owners and whether the product feels worth paying attention to.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-header">
+          <div>
+            <div class="eyebrow">Browse Screens</div>
+            <h2>Click through the product concepts.</h2>
+            <p>
+              Use the buttons or select any thumbnail. Each screen focuses on an operational job:
+              booking catering, managing the schedule, or understanding performance at a glance.
+            </p>
+          </div>
+        </div>
+
+        <div class="viewer-grid">
+          <div class="stage">
+            <div class="stage-top">
+              <div>
+                <h3 id="stage-title">Calendar Overview</h3>
+                <p id="stage-subtitle">AI-assisted scheduling and location planning for busy weeks.</p>
+              </div>
+              <p id="stage-count">1 / 6</p>
+            </div>
+
+            <div class="stage-frame">
+              <img id="stage-image" src="images/calendar-week-v2.png" alt="Calendar Overview screen" />
+            </div>
+          </div>
+
+          <aside class="viewer-panel">
+            <div class="info-card">
+              <div class="kicker" id="stage-kicker">Scheduling</div>
+              <h3 id="panel-title">Calendar Overview</h3>
+              <p id="panel-description">
+                A weekly planning view that helps decide where the truck should be, taking into
+                account events, recurring spots, and operational context.
+              </p>
+              <div class="chip-row" id="chip-row"></div>
+              <div class="controls">
+                <button class="button button-secondary" id="prev-button" type="button">Previous</button>
+                <button class="button button-primary" id="next-button" type="button">Next Screen</button>
+              </div>
+            </div>
+
+            <div class="thumb-card">
+              <div class="kicker">All Screens</div>
+              <div class="thumb-grid" id="thumb-grid"></div>
+            </div>
+
+            <div class="prompt-card">
+              <div class="kicker">Feedback Prompt</div>
+              <p>
+                If you were using this in your business, which part would save you the most time
+                or make you the most money?
+              </p>
+              <ul class="feedback-list">
+                <li><strong>Scheduling:</strong> Would a smarter calendar actually change where you park?</li>
+                <li><strong>Catering:</strong> Would a cleaner booking flow reduce back-and-forth and missed leads?</li>
+                <li><strong>Insights:</strong> Are the numbers shown here the ones you care about most?</li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+
+        <p class="footer-note">
+          Static preview for quick validation. No account, no backend, just the concept and the
+          screens.
+        </p>
+      </section>
+    </main>
+
+    <script>
+      const screens = [
+        {
+          file: "images/calendar-week-v2.png",
+          title: "Calendar Overview",
+          subtitle: "AI-assisted scheduling and location planning for busy weeks.",
+          category: "Scheduling",
+          description:
+            "A weekly planning view that helps decide where the truck should be, taking into account events, recurring spots, and operational context.",
+          chips: ["Weekly schedule", "Event opportunities", "Crew coordination"],
+        },
+        {
+          file: "images/calendar-week.png",
+          title: "Calendar Planning",
+          subtitle: "A broader week view for balancing markets, events, and open slots.",
+          category: "Operations",
+          description:
+            "This version leans into planning density: spotting conflicts, filling gaps, and seeing the shape of the week before it becomes chaotic.",
+          chips: ["Conflict spotting", "Open-slot planning", "Route visibility"],
+        },
+        {
+          file: "images/calendar-day.png",
+          title: "Day-of Operations",
+          subtitle: "A tighter view for what is happening today and what needs attention next.",
+          category: "Execution",
+          description:
+            "Useful when the question is no longer what the week looks like, but what has to happen now: service windows, prep timing, and immediate tasks.",
+          chips: ["Today view", "Action items", "Service timing"],
+        },
+        {
+          file: "images/catering-menu.png",
+          title: "Catering Menu",
+          subtitle: "A customer-facing menu concept designed to simplify package selection.",
+          category: "Catering",
+          description:
+            "This aims to turn inbound catering requests into a more structured sales flow, reducing the usual text-message negotiation around options and pricing.",
+          chips: ["Package pricing", "Menu clarity", "Lead conversion"],
+        },
+        {
+          file: "images/catering-management.png",
+          title: "Catering Management",
+          subtitle: "A back-office view for tracking requests, bookings, and upcoming jobs.",
+          category: "Sales",
+          description:
+            "Once leads come in, the owner needs a clean operational queue: what is confirmed, what still needs a response, and what is coming up soon.",
+          chips: ["Booking pipeline", "Follow-up status", "Upcoming jobs"],
+        },
+        {
+          file: "images/insights-dashboard.png",
+          title: "Insights Dashboard",
+          subtitle: "A performance view focused on revenue, demand patterns, and business signals.",
+          category: "Insights",
+          description:
+            "The point here is simple: help owners understand what is working, what is underperforming, and where the next decisions should come from.",
+          chips: ["Revenue snapshot", "Demand signals", "Prep guidance"],
+        },
+      ];
+
+      const stageImage = document.getElementById("stage-image");
+      const stageTitle = document.getElementById("stage-title");
+      const stageSubtitle = document.getElementById("stage-subtitle");
+      const stageCount = document.getElementById("stage-count");
+      const stageKicker = document.getElementById("stage-kicker");
+      const panelTitle = document.getElementById("panel-title");
+      const panelDescription = document.getElementById("panel-description");
+      const chipRow = document.getElementById("chip-row");
+      const thumbGrid = document.getElementById("thumb-grid");
+      const prevButton = document.getElementById("prev-button");
+      const nextButton = document.getElementById("next-button");
+
+      let index = 0;
+
+      function renderThumbnails() {
+        thumbGrid.innerHTML = "";
+
+        screens.forEach((screen, screenIndex) => {
+          const button = document.createElement("button");
+          button.type = "button";
+          button.className = `thumb${screenIndex === index ? " active" : ""}`;
+          button.setAttribute("aria-label", `Open ${screen.title}`);
+          button.addEventListener("click", () => {
+            index = screenIndex;
+            render();
+          });
+
+          const image = document.createElement("img");
+          image.src = screen.file;
+          image.alt = `${screen.title} thumbnail`;
+
+          const copy = document.createElement("div");
+          copy.className = "thumb-copy";
+
+          const strong = document.createElement("strong");
+          strong.textContent = screen.title;
+
+          const span = document.createElement("span");
+          span.textContent = screen.category;
+
+          copy.appendChild(strong);
+          copy.appendChild(span);
+          button.appendChild(image);
+          button.appendChild(copy);
+          thumbGrid.appendChild(button);
+        });
+      }
+
+      function render() {
+        const screen = screens[index];
+
+        stageImage.src = screen.file;
+        stageImage.alt = `${screen.title} screen`;
+        stageTitle.textContent = screen.title;
+        stageSubtitle.textContent = screen.subtitle;
+        stageCount.textContent = `${index + 1} / ${screens.length}`;
+        stageKicker.textContent = screen.category;
+        panelTitle.textContent = screen.title;
+        panelDescription.textContent = screen.description;
+
+        chipRow.innerHTML = "";
+        screen.chips.forEach((chip) => {
+          const chipElement = document.createElement("span");
+          chipElement.className = "chip";
+          chipElement.textContent = chip;
+          chipRow.appendChild(chipElement);
+        });
+
+        renderThumbnails();
+      }
+
+      prevButton.addEventListener("click", () => {
+        index = (index - 1 + screens.length) % screens.length;
+        render();
+      });
+
+      nextButton.addEventListener("click", () => {
+        index = (index + 1) % screens.length;
+        render();
+      });
+
+      window.addEventListener("keydown", (event) => {
+        if (event.key === "ArrowLeft") {
+          index = (index - 1 + screens.length) % screens.length;
+          render();
+        }
+
+        if (event.key === "ArrowRight") {
+          index = (index + 1) % screens.length;
+          render();
+        }
+      });
+
+      render();
+    </script>
+  </body>
+</html>
