@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tacosauce.ai Preview</title>
+    <title>TacoSauce — The magic sauce for food truck operators</title>
     <meta
       name="description"
-      content="A lightweight Tacosauce.ai product preview for validating the concept with food truck owners."
+      content="TacoSauce helps solo food truck operators schedule smarter, price confidently, and stop guessing. Built for operators, not restaurants."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -32,13 +32,8 @@
         --radius-md: 14px;
       }
 
-      * {
-        box-sizing: border-box;
-      }
-
-      html {
-        scroll-behavior: smooth;
-      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
 
       body {
         margin: 0;
@@ -51,14 +46,8 @@
           linear-gradient(180deg, #fffdf7 0%, var(--bg) 45%, #ebe7df 100%);
       }
 
-      a {
-        color: inherit;
-      }
-
-      img {
-        display: block;
-        max-width: 100%;
-      }
+      a { color: inherit; }
+      img { display: block; max-width: 100%; }
 
       .page {
         width: min(1180px, calc(100% - 32px));
@@ -66,12 +55,13 @@
         padding: 28px 0 64px;
       }
 
+      /* ─── Hero ─────────────────────────────────── */
       .hero {
         position: relative;
         overflow: hidden;
         border: 1px solid rgba(202, 138, 4, 0.16);
         border-radius: var(--radius-xl);
-        padding: 32px;
+        padding: 40px 36px;
         background:
           linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(255, 251, 235, 0.88)),
           linear-gradient(135deg, rgba(250, 204, 21, 0.18), rgba(220, 38, 38, 0.08));
@@ -104,7 +94,17 @@
         text-transform: uppercase;
       }
 
-      .eyebrow::before {
+      .eyebrow.live::before {
+        content: "";
+        width: 9px;
+        height: 9px;
+        border-radius: 999px;
+        background: #22c55e;
+        box-shadow: 0 0 0 3px rgba(34,197,94,0.25);
+        animation: pulse 2s infinite;
+      }
+
+      .eyebrow.concept::before {
         content: "";
         width: 9px;
         height: 9px;
@@ -112,16 +112,19 @@
         background: linear-gradient(135deg, var(--yellow), var(--red));
       }
 
-      h1,
-      h2,
-      h3 {
+      @keyframes pulse {
+        0%, 100% { box-shadow: 0 0 0 3px rgba(34,197,94,0.25); }
+        50% { box-shadow: 0 0 0 6px rgba(34,197,94,0.1); }
+      }
+
+      h1, h2, h3 {
         margin: 0;
         font-family: "Space Grotesk", system-ui, sans-serif;
         letter-spacing: -0.04em;
       }
 
       h1 {
-        max-width: 10ch;
+        max-width: 12ch;
         font-size: clamp(2.6rem, 6vw, 5.4rem);
         line-height: 0.95;
       }
@@ -129,8 +132,8 @@
       .hero-grid {
         display: grid;
         grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
-        gap: 28px;
-        align-items: end;
+        gap: 36px;
+        align-items: start;
       }
 
       .hero-copy p {
@@ -141,32 +144,84 @@
         color: var(--muted);
       }
 
-      .hero-points {
+      .cta-row {
+        display: flex;
+        gap: 12px;
+        margin-top: 28px;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 0 22px;
+        height: 50px;
+        border-radius: 14px;
+        font-weight: 700;
+        font-size: 0.97rem;
+        text-decoration: none;
+        transition: transform 160ms ease, box-shadow 160ms ease;
+        border: none;
+        cursor: pointer;
+      }
+
+      .btn:hover { transform: translateY(-2px); }
+
+      .btn-primary {
+        background: linear-gradient(135deg, #fde047, #fca5a5);
+        color: #111827;
+        box-shadow: 0 16px 40px rgba(220, 38, 38, 0.18);
+      }
+
+      .btn-secondary {
+        background: rgba(255,255,255,0.85);
+        color: var(--text);
+        border: 1.5px solid rgba(39,39,42,0.15);
+      }
+
+      .hero-features {
         display: grid;
         gap: 12px;
       }
 
-      .hero-card {
-        padding: 18px 18px 16px;
+      .feature-card {
+        padding: 16px 18px;
         border-radius: var(--radius-lg);
         border: 1px solid var(--line);
         background: var(--panel-strong);
       }
 
-      .hero-card strong {
+      .feature-card strong {
         display: block;
-        margin-bottom: 6px;
+        margin-bottom: 5px;
         font-size: 0.95rem;
       }
 
-      .hero-card span {
+      .feature-card span {
         color: var(--muted);
+        font-size: 0.9rem;
         line-height: 1.55;
       }
 
+      .feature-badge {
+        display: inline-block;
+        margin-bottom: 8px;
+        padding: 3px 10px;
+        border-radius: 999px;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        background: rgba(34,197,94,0.12);
+        color: #15803d;
+        border: 1px solid rgba(34,197,94,0.2);
+      }
+
+      /* ─── Section ───────────────────────────────── */
       .section {
         margin-top: 26px;
-        padding: 24px;
+        padding: 28px;
         border-radius: var(--radius-xl);
         border: 1px solid var(--line);
         background: var(--panel);
@@ -175,20 +230,79 @@
       }
 
       .section-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: end;
-        gap: 18px;
-        margin-bottom: 20px;
+        margin-bottom: 24px;
+      }
+
+      .section-header h2 {
+        font-size: clamp(1.6rem, 3vw, 2.2rem);
+        margin-top: 10px;
       }
 
       .section-header p {
-        max-width: 60ch;
+        max-width: 66ch;
         margin: 10px 0 0;
         color: var(--muted);
         line-height: 1.65;
       }
 
+      /* ─── Feature grid ───────────────────────────── */
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 16px;
+      }
+
+      .fcard {
+        padding: 20px;
+        border-radius: 20px;
+        border: 1px solid var(--line);
+        background: rgba(255,255,255,0.88);
+      }
+
+      .fcard-icon {
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+      }
+
+      .fcard h3 {
+        font-size: 1rem;
+        margin-bottom: 6px;
+      }
+
+      .fcard p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.9rem;
+        line-height: 1.55;
+      }
+
+      /* ─── Tools grid ─────────────────────────────── */
+      .tools-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: 14px;
+      }
+
+      .tool-card {
+        padding: 18px;
+        border-radius: 18px;
+        border: 1px solid rgba(202,138,4,0.16);
+        background: rgba(254,249,195,0.5);
+      }
+
+      .tool-card strong {
+        display: block;
+        margin: 8px 0 4px;
+        font-size: 0.97rem;
+      }
+
+      .tool-card span {
+        color: var(--muted);
+        font-size: 0.88rem;
+        line-height: 1.5;
+      }
+
+      /* ─── Screen viewer ──────────────────────────── */
       .viewer-grid {
         display: grid;
         grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.55fr);
@@ -197,9 +311,8 @@
 
       .stage {
         border-radius: 26px;
-        border: 1px solid rgba(39, 39, 42, 0.08);
-        background:
-          linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(250, 250, 249, 0.94));
+        border: 1px solid rgba(39,39,42,0.08);
+        background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(250,250,249,0.94));
         overflow: hidden;
       }
 
@@ -209,39 +322,26 @@
         align-items: center;
         gap: 16px;
         padding: 16px 18px;
-        border-bottom: 1px solid rgba(39, 39, 42, 0.08);
+        border-bottom: 1px solid rgba(39,39,42,0.08);
       }
 
-      .stage-top p {
-        margin: 0;
-        color: var(--muted);
-        font-size: 0.94rem;
-      }
-
-      .stage-frame {
-        padding: 16px;
-      }
+      .stage-top p { margin: 0; color: var(--muted); font-size: 0.94rem; }
+      .stage-frame { padding: 16px; }
 
       .stage-frame img {
         width: 100%;
         height: auto;
         border-radius: 18px;
-        border: 1px solid rgba(39, 39, 42, 0.08);
+        border: 1px solid rgba(39,39,42,0.08);
         background: white;
       }
 
-      .viewer-panel {
-        display: flex;
-        flex-direction: column;
-        gap: 14px;
-      }
+      .viewer-panel { display: flex; flex-direction: column; gap: 14px; }
 
-      .info-card,
-      .thumb-card,
-      .prompt-card {
+      .info-card, .thumb-card, .prompt-card {
         border-radius: 22px;
-        border: 1px solid rgba(39, 39, 42, 0.08);
-        background: rgba(255, 255, 255, 0.88);
+        border: 1px solid rgba(39,39,42,0.08);
+        background: rgba(255,255,255,0.88);
         padding: 18px;
       }
 
@@ -265,46 +365,23 @@
         background: var(--red);
       }
 
-      .info-card h3 {
-        font-size: clamp(1.4rem, 2vw, 1.8rem);
-        line-height: 1.05;
-      }
+      .info-card h3 { font-size: clamp(1.4rem, 2vw, 1.8rem); line-height: 1.05; }
+      .info-card p, .prompt-card p { margin: 12px 0 0; color: var(--muted); line-height: 1.65; }
 
-      .info-card p,
-      .prompt-card p {
-        margin: 12px 0 0;
-        color: var(--muted);
-        line-height: 1.65;
-      }
-
-      .chip-row {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        margin-top: 16px;
-      }
+      .chip-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
 
       .chip {
         padding: 8px 11px;
         border-radius: 999px;
-        border: 1px solid rgba(202, 138, 4, 0.18);
-        background: rgba(254, 249, 195, 0.7);
+        border: 1px solid rgba(202,138,4,0.18);
+        background: rgba(254,249,195,0.7);
         font-size: 0.85rem;
         font-weight: 600;
       }
 
-      .controls {
-        display: flex;
-        gap: 10px;
-        margin-top: 18px;
-      }
+      .controls { display: flex; gap: 10px; margin-top: 18px; }
 
-      button {
-        appearance: none;
-        border: 0;
-        cursor: pointer;
-        font: inherit;
-      }
+      button { appearance: none; border: 0; cursor: pointer; font: inherit; }
 
       .button {
         flex: 1;
@@ -316,33 +393,21 @@
         padding: 0 16px;
         border-radius: 14px;
         font-weight: 700;
-        transition:
-          transform 160ms ease,
-          box-shadow 160ms ease,
-          background 160ms ease,
-          color 160ms ease;
+        transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
       }
 
-      .button:hover {
-        transform: translateY(-1px);
-      }
-
-      .button:focus-visible,
-      .thumb:focus-visible {
-        outline: 3px solid rgba(220, 38, 38, 0.22);
-        outline-offset: 2px;
-      }
+      .button:hover { transform: translateY(-1px); }
 
       .button-primary {
         color: #111827;
         background: linear-gradient(135deg, #fde047, #fca5a5);
-        box-shadow: 0 16px 40px rgba(220, 38, 38, 0.18);
+        box-shadow: 0 16px 40px rgba(220,38,38,0.18);
       }
 
       .button-secondary {
         color: var(--text);
-        background: rgba(244, 244, 245, 0.92);
-        border: 1px solid rgba(39, 39, 42, 0.08);
+        background: rgba(244,244,245,0.92);
+        border: 1px solid rgba(39,39,42,0.08);
       }
 
       .thumb-grid {
@@ -357,226 +422,190 @@
         overflow: hidden;
         text-align: left;
         border-radius: 16px;
-        border: 1px solid rgba(39, 39, 42, 0.08);
+        border: 1px solid rgba(39,39,42,0.08);
         background: white;
-        transition:
-          transform 160ms ease,
-          border-color 160ms ease,
-          box-shadow 160ms ease;
+        transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
       }
 
       .thumb:hover {
         transform: translateY(-2px);
-        border-color: rgba(220, 38, 38, 0.28);
-        box-shadow: 0 18px 28px rgba(24, 24, 27, 0.12);
+        border-color: rgba(220,38,38,0.28);
+        box-shadow: 0 18px 28px rgba(24,24,27,0.12);
       }
 
       .thumb.active {
-        border-color: rgba(220, 38, 38, 0.42);
-        box-shadow: 0 20px 36px rgba(220, 38, 38, 0.16);
+        border-color: rgba(220,38,38,0.42);
+        box-shadow: 0 20px 36px rgba(220,38,38,0.16);
       }
 
-      .thumb img {
-        aspect-ratio: 16 / 11;
-        width: 100%;
-        object-fit: cover;
-        background: #fafaf9;
-      }
+      .thumb img { aspect-ratio: 16/11; width: 100%; object-fit: cover; background: #fafaf9; }
+      .thumb-copy { padding: 10px 11px 12px; }
+      .thumb-copy strong { display: block; font-size: 0.92rem; }
+      .thumb-copy span { display: block; margin-top: 4px; color: var(--muted); font-size: 0.83rem; line-height: 1.45; }
 
-      .thumb-copy {
-        padding: 10px 11px 12px;
-      }
+      .feedback-list { margin: 14px 0 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+      .feedback-list li { padding: 12px 14px; border-radius: 14px; background: rgba(244,244,245,0.85); color: var(--muted); line-height: 1.55; }
+      .feedback-list strong { color: var(--text); }
 
-      .thumb-copy strong {
-        display: block;
-        font-size: 0.92rem;
-      }
+      .footer-note { margin-top: 18px; color: var(--muted); font-size: 0.92rem; }
 
-      .thumb-copy span {
-        display: block;
-        margin-top: 4px;
-        color: var(--muted);
-        font-size: 0.83rem;
-        line-height: 1.45;
-      }
+      /* ─── Cost table ─────────────────────────────── */
+      .cost-table { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 0.97rem; }
+      .cost-table th { padding: 10px 12px; color: var(--muted); font-weight: 600; text-align: left; border-bottom: 2px solid var(--line); }
+      .cost-table th.r { text-align: right; }
+      .cost-table td { padding: 10px 12px; border-bottom: 1px solid var(--line); }
+      .cost-table td.r { text-align: right; }
+      .cost-table .total td { background: rgba(250,204,21,0.08); font-weight: 700; }
 
-      .feedback-list {
-        margin: 14px 0 0;
-        padding: 0;
-        list-style: none;
-        display: grid;
-        gap: 10px;
-      }
-
-      .feedback-list li {
-        padding: 12px 14px;
-        border-radius: 14px;
-        background: rgba(244, 244, 245, 0.85);
-        color: var(--muted);
-        line-height: 1.55;
-      }
-
-      .feedback-list strong {
-        color: var(--text);
-      }
-
-      .footer-note {
-        margin-top: 18px;
-        color: var(--muted);
-        font-size: 0.92rem;
-      }
-
+      /* ─── Responsive ─────────────────────────────── */
       @media (max-width: 980px) {
-        .hero-grid,
-        .viewer-grid {
-          grid-template-columns: 1fr;
-        }
-
-        h1 {
-          max-width: 12ch;
-        }
+        .hero-grid, .viewer-grid { grid-template-columns: 1fr; }
+        h1 { max-width: 12ch; }
       }
 
       @media (max-width: 720px) {
-        .page {
-          width: min(100% - 20px, 1180px);
-          padding-top: 12px;
-          padding-bottom: 32px;
-        }
-
-        .hero,
-        .section {
-          padding: 18px;
-          border-radius: 22px;
-        }
-
-        .stage-top,
-        .stage-frame,
-        .info-card,
-        .thumb-card,
-        .prompt-card {
-          padding: 14px;
-        }
-
-        .stage-top {
-          align-items: start;
-          flex-direction: column;
-        }
-
-        .thumb-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .controls {
-          flex-direction: column;
-        }
+        .page { width: min(100% - 20px, 1180px); padding-top: 12px; padding-bottom: 32px; }
+        .hero, .section { padding: 18px; border-radius: 22px; }
+        .stage-top, .stage-frame, .info-card, .thumb-card, .prompt-card { padding: 14px; }
+        .stage-top { align-items: start; flex-direction: column; }
+        .thumb-grid { grid-template-columns: 1fr; }
+        .controls { flex-direction: column; }
+        .feature-grid, .tools-grid { grid-template-columns: 1fr; }
       }
     </style>
   </head>
   <body>
     <main class="page">
+
+      <!-- ── Hero ─────────────────────────────────── -->
       <section class="hero">
-        <div class="eyebrow">Concept Preview</div>
+        <div class="eyebrow live">Early Access — Live Beta</div>
         <div class="hero-grid">
           <div class="hero-copy">
-            <h1>Tacosauce.ai for food truck operators.</h1>
+            <h1>The magic sauce for food truck operators.</h1>
             <p>
-              This is a lightweight walkthrough of a software concept built around the day-to-day
-              realities of running a food truck: scheduling, catering, local rules, and smarter
-              decisions about where to be and what to prep.
+              TacoSauce is a scheduling and ops platform built specifically for solo food truck owners.
+              Calendar, tools, and calendar sync — built for operators, not restaurant chains.
             </p>
+            <div class="cta-row">
+              <a href="https://staging.tacosauce.app" class="btn btn-primary" target="_blank" rel="noopener">
+                Try it live →
+              </a>
+              <a href="#screens" class="btn btn-secondary">See the screens</a>
+            </div>
           </div>
 
-          <div class="hero-points">
-            <div class="hero-card">
-              <strong>📱 Auto-post your schedule, hands-free</strong>
-              <span>49% of customers abandon trucks with unpredictable hours. TacoSauce posts your location and hours to social automatically — no copywriting required.</span>
+          <div class="hero-features">
+            <div class="feature-card">
+              <div class="feature-badge">✅ Live</div>
+              <strong>🗓️ Smart calendar</strong>
+              <span>Schedule events, markets, and catering. Recurring events, drag to reschedule, prep lists, staff count, and revenue targets per event.</span>
             </div>
-            <div class="hero-card">
-              <strong>📍 Event go/no-go calculator</strong>
-              <span>Stop guessing if an event is worth it. Enter the attendance, truck count, and ticket average — we'll tell you if it pencils out before you commit.</span>
+            <div class="feature-card">
+              <div class="feature-badge">✅ Live</div>
+              <strong>🔧 Operator tools</strong>
+              <span>Event go/no-go, menu pricing, catering quotes, and break-even — instant calculators that update as you drag.</span>
             </div>
-            <div class="hero-card">
-              <strong>🗓️ Daily ops planner for one-person crews</strong>
-              <span>Where are you parking, what do you need to prep, how many staff. Food-truck-specific, not restaurant-overkill.</span>
+            <div class="feature-card">
+              <div class="feature-badge">✅ Live</div>
+              <strong>📅 Calendar sync</strong>
+              <span>Push your schedule to Google Calendar automatically. Or subscribe in Apple Calendar, Outlook, or any iCal app.</span>
             </div>
-            <div class="hero-card">
-              <strong>💰 See what's actually making you money</strong>
-              <span>Track profitability by location, event, and day — so you know where to show up more and where to stop wasting time.</span>
+            <div class="feature-card">
+              <div class="feature-badge">Coming soon</div>
+              <strong>📱 Auto-post your schedule</strong>
+              <span>49% of customers abandon trucks with unpredictable hours. Post your schedule to social automatically — no copywriting needed.</span>
             </div>
           </div>
         </div>
       </section>
 
+      <!-- ── What's built ───────────────────────────── -->
       <section class="section">
         <div class="section-header">
-          <div>
-            <div class="eyebrow">Startup Costs</div>
-            <h2>What it actually costs to run this.</h2>
-            <p>
-              Full transparency on the current monthly burn rate. These are real expenses for running
-              Tacosauce.ai in its current early stage - no fluff, no hidden costs.
-            </p>
-          </div>
+          <div class="eyebrow concept">What's built today</div>
+          <h2>A real app, not a mockup.</h2>
+          <p>
+            TacoSauce is in active development. Here's what operators can use right now.
+          </p>
         </div>
 
-        <table style="width:100%;border-collapse:collapse;margin-top:8px;font-size:0.97rem;">
-          <thead>
-            <tr style="border-bottom:2px solid var(--line);text-align:left;">
-              <th style="padding:10px 12px;color:var(--muted);font-weight:600;">Expense</th>
-              <th style="padding:10px 12px;color:var(--muted);font-weight:600;">Category</th>
-              <th style="padding:10px 12px;color:var(--muted);font-weight:600;text-align:right;">Monthly</th>
-              <th style="padding:10px 12px;color:var(--muted);font-weight:600;text-align:right;">Annual</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr style="border-bottom:1px solid var(--line);">
-              <td style="padding:10px 12px;"><strong>Hetzner VPS</strong><br><span style="color:var(--muted);font-size:0.88rem;">Cloud server</span></td>
-              <td style="padding:10px 12px;color:var(--muted);">Infrastructure</td>
-              <td style="padding:10px 12px;text-align:right;">$4.99</td>
-              <td style="padding:10px 12px;text-align:right;">~$60</td>
-            </tr>
-            <tr style="border-bottom:1px solid var(--line);">
-              <td style="padding:10px 12px;"><strong>tacosauce.app domain</strong><br><span style="color:var(--muted);font-size:0.88rem;">Domain registration</span></td>
-              <td style="padding:10px 12px;color:var(--muted);">Infrastructure</td>
-              <td style="padding:10px 12px;text-align:right;">~$2.08</td>
-              <td style="padding:10px 12px;text-align:right;">$25</td>
-            </tr>
-            <tr style="border-bottom:1px solid var(--line);">
-              <td style="padding:10px 12px;"><strong>Brave Search API</strong><br><span style="color:var(--muted);font-size:0.88rem;">Web search for Maya</span></td>
-              <td style="padding:10px 12px;color:var(--muted);">API</td>
-              <td style="padding:10px 12px;text-align:right;">$5.00</td>
-              <td style="padding:10px 12px;text-align:right;">$60</td>
-            </tr>
-            <tr style="border-bottom:1px solid var(--line);">
-              <td style="padding:10px 12px;"><strong>Claude Max</strong><br><span style="color:var(--muted);font-size:0.88rem;">Claude subscription for AI features</span></td>
-              <td style="padding:10px 12px;color:var(--muted);">AI</td>
-              <td style="padding:10px 12px;text-align:right;">$100.00</td>
-              <td style="padding:10px 12px;text-align:right;">$1,200</td>
-            </tr>
-            <tr style="background:rgba(250,204,21,0.08);font-weight:700;">
-              <td style="padding:12px 12px;" colspan="2">Total burn rate</td>
-              <td style="padding:12px 12px;text-align:right;">~$112.07/mo</td>
-              <td style="padding:12px 12px;text-align:right;">~$1,344.96/yr</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <p class="footer-note" style="margin-top:14px;">
-          The dominant cost is Claude Max - the AI backbone powering Maya. As the product scales, this shifts to usage-based API pricing, which becomes cost-efficient at volume.
-        </p>
+        <div class="feature-grid">
+          <div class="fcard">
+            <div class="fcard-icon">🗓️</div>
+            <h3>Event calendar</h3>
+            <p>Monthly view with FullCalendar. Click any day to add an event. Event types: market, catering, private, blocked.</p>
+          </div>
+          <div class="fcard">
+            <div class="fcard-icon">🔁</div>
+            <h3>Recurring events</h3>
+            <p>Set up weekly, biweekly, or monthly recurring events with an optional end date. Perfect for regular markets.</p>
+          </div>
+          <div class="fcard">
+            <div class="fcard-icon">📋</div>
+            <h3>Prep list templates</h3>
+            <p>Save reusable prep lists in Settings. Load them into any event with one tap, or save directly from an event.</p>
+          </div>
+          <div class="fcard">
+            <div class="fcard-icon">💰</div>
+            <h3>Revenue targets</h3>
+            <p>Set a revenue goal per event. Shows up in your calendar data so you can track actuals against targets later.</p>
+          </div>
+          <div class="fcard">
+            <div class="fcard-icon">🔗</div>
+            <h3>Google Calendar sync</h3>
+            <p>Connect once — events push automatically to a dedicated TacoSauce calendar in your Google account.</p>
+          </div>
+          <div class="fcard">
+            <div class="fcard-icon">🍎</div>
+            <h3>iCal / Apple Calendar</h3>
+            <p>Subscribe in Apple Calendar, Outlook, or any iCal app. One-tap "Add to Apple Calendar" button in Settings.</p>
+          </div>
+        </div>
       </section>
 
+      <!-- ── Tools ─────────────────────────────────── -->
       <section class="section">
         <div class="section-header">
-          <div>
-            <div class="eyebrow">Browse Screens</div>
-            <h2>Click through the product concepts.</h2>
-            <p>
-              Use the buttons or select any thumbnail. Each screen focuses on an operational job:
-              booking catering, managing the schedule, or understanding performance at a glance.
-            </p>
+          <div class="eyebrow concept">Operator Tools</div>
+          <h2>Quick calculators for food truck decisions.</h2>
+          <p>
+            All instant, no sign-in needed. Sliders update results in real time.
+          </p>
+        </div>
+
+        <div class="tools-grid">
+          <div class="tool-card">
+            <div style="font-size:1.6rem">📍</div>
+            <strong>Event go/no-go</strong>
+            <span>Enter attendance, truck count, avg spend, food cost % → instant verdict with estimated profit and margin.</span>
           </div>
+          <div class="tool-card">
+            <div style="font-size:1.6rem">🌮</div>
+            <strong>Menu pricing</strong>
+            <span>Enter ingredient cost and target food cost % → minimum sell price, suggested price (rounded to nearest $0.50), and multiplier.</span>
+          </div>
+          <div class="tool-card">
+            <div style="font-size:1.6rem">🍽️</div>
+            <strong>Catering quote</strong>
+            <span>Headcount × per-person cost + overhead → quote range based on 25–30% food cost. Per-person breakdown included.</span>
+          </div>
+          <div class="tool-card">
+            <div style="font-size:1.6rem">💰</div>
+            <strong>Break-even</strong>
+            <span>Monthly fixed costs ÷ gross margin → events per month needed to cover your nut. Days per week included.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Screen viewer ──────────────────────────── -->
+      <section class="section" id="screens">
+        <div class="section-header">
+          <div class="eyebrow concept">Product Screens</div>
+          <h2>Click through the early concepts.</h2>
+          <p>
+            These screens are early-stage mockups that shaped the current product direction. The live app reflects many of these ideas in working form.
+          </p>
         </div>
 
         <div class="viewer-grid">
@@ -588,7 +617,6 @@
               </div>
               <p id="stage-count">1 / 6</p>
             </div>
-
             <div class="stage-frame">
               <img id="stage-image" src="images/calendar-week-v2.png" alt="Calendar Overview screen" />
             </div>
@@ -599,8 +627,7 @@
               <div class="kicker" id="stage-kicker">Scheduling</div>
               <h3 id="panel-title">Calendar Overview</h3>
               <p id="panel-description">
-                A weekly planning view that helps decide where the truck should be, taking into
-                account events, recurring spots, and operational context.
+                A weekly planning view that helps decide where the truck should be, taking into account events, recurring spots, and operational context.
               </p>
               <div class="chip-row" id="chip-row"></div>
               <div class="controls">
@@ -616,24 +643,77 @@
 
             <div class="prompt-card">
               <div class="kicker">Feedback Prompt</div>
-              <p>
-                If you were using this in your business, which part would save you the most time
-                or make you the most money?
-              </p>
+              <p>If you were using this in your business, which part would save you the most time or make you the most money?</p>
               <ul class="feedback-list">
                 <li><strong>Scheduling:</strong> Would a smarter calendar actually change where you park?</li>
-                <li><strong>Catering:</strong> Would a cleaner booking flow reduce back-and-forth and missed leads?</li>
-                <li><strong>Insights:</strong> Are the numbers shown here the ones you care about most?</li>
+                <li><strong>Tools:</strong> Which calculator would you use before every event?</li>
+                <li><strong>Calendar sync:</strong> Would you share your truck's schedule link with customers?</li>
               </ul>
             </div>
           </aside>
         </div>
 
         <p class="footer-note">
-          Static preview for quick validation. No account, no backend, just the concept and the
-          screens.
+          <a href="https://staging.tacosauce.app" target="_blank" rel="noopener" style="color: var(--red-deep); font-weight:600;">Try the live app →</a>
+          &nbsp;Early access, no credit card required.
         </p>
       </section>
+
+      <!-- ── Cost table ─────────────────────────────── -->
+      <section class="section">
+        <div class="section-header">
+          <div class="eyebrow concept">Transparent Costs</div>
+          <h2>What it costs to run this.</h2>
+          <p>Full transparency on the current monthly burn. Real expenses, no fluff.</p>
+        </div>
+
+        <table class="cost-table">
+          <thead>
+            <tr>
+              <th>Expense</th>
+              <th>Category</th>
+              <th class="r">Monthly</th>
+              <th class="r">Annual</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Hetzner VPS</strong><br><span style="color:var(--muted);font-size:0.88rem;">Cloud server (app + staging)</span></td>
+              <td style="color:var(--muted);">Infrastructure</td>
+              <td class="r">$4.99</td>
+              <td class="r">~$60</td>
+            </tr>
+            <tr>
+              <td><strong>tacosauce.app domain</strong><br><span style="color:var(--muted);font-size:0.88rem;">Domain registration</span></td>
+              <td style="color:var(--muted);">Infrastructure</td>
+              <td class="r">~$2.08</td>
+              <td class="r">$25</td>
+            </tr>
+            <tr>
+              <td><strong>Brave Search API</strong><br><span style="color:var(--muted);font-size:0.88rem;">Web research for AI features</span></td>
+              <td style="color:var(--muted);">API</td>
+              <td class="r">$5.00</td>
+              <td class="r">$60</td>
+            </tr>
+            <tr>
+              <td><strong>Claude Max</strong><br><span style="color:var(--muted);font-size:0.88rem;">AI backbone for Maya (dev + features)</span></td>
+              <td style="color:var(--muted);">AI</td>
+              <td class="r">$100.00</td>
+              <td class="r">$1,200</td>
+            </tr>
+            <tr class="total">
+              <td colspan="2">Total burn rate</td>
+              <td class="r">~$112.07/mo</td>
+              <td class="r">~$1,344.96/yr</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p class="footer-note">
+          Dominant cost is Claude Max — the AI backbone powering development and features. As the product scales, this shifts to usage-based API pricing which becomes cost-efficient at volume.
+        </p>
+      </section>
+
     </main>
 
     <script>
@@ -643,8 +723,7 @@
           title: "Calendar Overview",
           subtitle: "AI-assisted scheduling and location planning for busy weeks.",
           category: "Scheduling",
-          description:
-            "A weekly planning view that helps decide where the truck should be, taking into account events, recurring spots, and operational context.",
+          description: "A weekly planning view that helps decide where the truck should be, taking into account events, recurring spots, and operational context.",
           chips: ["Weekly schedule", "Event opportunities", "Crew coordination"],
         },
         {
@@ -652,8 +731,7 @@
           title: "Calendar Planning",
           subtitle: "A broader week view for balancing markets, events, and open slots.",
           category: "Operations",
-          description:
-            "This version leans into planning density: spotting conflicts, filling gaps, and seeing the shape of the week before it becomes chaotic.",
+          description: "This version leans into planning density: spotting conflicts, filling gaps, and seeing the shape of the week before it becomes chaotic.",
           chips: ["Conflict spotting", "Open-slot planning", "Route visibility"],
         },
         {
@@ -661,8 +739,7 @@
           title: "Day-of Operations",
           subtitle: "A tighter view for what is happening today and what needs attention next.",
           category: "Execution",
-          description:
-            "Useful when the question is no longer what the week looks like, but what has to happen now: service windows, prep timing, and immediate tasks.",
+          description: "Useful when the question is no longer what the week looks like, but what has to happen now: service windows, prep timing, and immediate tasks.",
           chips: ["Today view", "Action items", "Service timing"],
         },
         {
@@ -670,8 +747,7 @@
           title: "Catering Menu",
           subtitle: "A customer-facing menu concept designed to simplify package selection.",
           category: "Catering",
-          description:
-            "This aims to turn inbound catering requests into a more structured sales flow, reducing the usual text-message negotiation around options and pricing.",
+          description: "This aims to turn inbound catering requests into a more structured sales flow, reducing the usual text-message negotiation around options and pricing.",
           chips: ["Package pricing", "Menu clarity", "Lead conversion"],
         },
         {
@@ -679,8 +755,7 @@
           title: "Catering Management",
           subtitle: "A back-office view for tracking requests, bookings, and upcoming jobs.",
           category: "Sales",
-          description:
-            "Once leads come in, the owner needs a clean operational queue: what is confirmed, what still needs a response, and what is coming up soon.",
+          description: "Once leads come in, the owner needs a clean operational queue: what is confirmed, what still needs a response, and what is coming up soon.",
           chips: ["Booking pipeline", "Follow-up status", "Upcoming jobs"],
         },
         {
@@ -688,8 +763,7 @@
           title: "Insights Dashboard",
           subtitle: "A performance view focused on revenue, demand patterns, and business signals.",
           category: "Insights",
-          description:
-            "The point here is simple: help owners understand what is working, what is underperforming, and where the next decisions should come from.",
+          description: "The point here is simple: help owners understand what is working, what is underperforming, and where the next decisions should come from.",
           chips: ["Revenue snapshot", "Demand signals", "Prep guidance"],
         },
       ];
@@ -710,81 +784,55 @@
 
       function renderThumbnails() {
         thumbGrid.innerHTML = "";
-
-        screens.forEach((screen, screenIndex) => {
-          const button = document.createElement("button");
-          button.type = "button";
-          button.className = `thumb${screenIndex === index ? " active" : ""}`;
-          button.setAttribute("aria-label", `Open ${screen.title}`);
-          button.addEventListener("click", () => {
-            index = screenIndex;
-            render();
-          });
-
-          const image = document.createElement("img");
-          image.src = screen.file;
-          image.alt = `${screen.title} thumbnail`;
-
+        screens.forEach((screen, i) => {
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = `thumb${i === index ? " active" : ""}`;
+          btn.setAttribute("aria-label", `Open ${screen.title}`);
+          btn.addEventListener("click", () => { index = i; render(); });
+          const img = document.createElement("img");
+          img.src = screen.file;
+          img.alt = `${screen.title} thumbnail`;
           const copy = document.createElement("div");
           copy.className = "thumb-copy";
-
           const strong = document.createElement("strong");
           strong.textContent = screen.title;
-
           const span = document.createElement("span");
           span.textContent = screen.category;
-
           copy.appendChild(strong);
           copy.appendChild(span);
-          button.appendChild(image);
-          button.appendChild(copy);
-          thumbGrid.appendChild(button);
+          btn.appendChild(img);
+          btn.appendChild(copy);
+          thumbGrid.appendChild(btn);
         });
       }
 
       function render() {
-        const screen = screens[index];
-
-        stageImage.src = screen.file;
-        stageImage.alt = `${screen.title} screen`;
-        stageTitle.textContent = screen.title;
-        stageSubtitle.textContent = screen.subtitle;
+        const s = screens[index];
+        stageImage.src = s.file;
+        stageImage.alt = `${s.title} screen`;
+        stageTitle.textContent = s.title;
+        stageSubtitle.textContent = s.subtitle;
         stageCount.textContent = `${index + 1} / ${screens.length}`;
-        stageKicker.textContent = screen.category;
-        panelTitle.textContent = screen.title;
-        panelDescription.textContent = screen.description;
-
+        stageKicker.textContent = s.category;
+        panelTitle.textContent = s.title;
+        panelDescription.textContent = s.description;
         chipRow.innerHTML = "";
-        screen.chips.forEach((chip) => {
-          const chipElement = document.createElement("span");
-          chipElement.className = "chip";
-          chipElement.textContent = chip;
-          chipRow.appendChild(chipElement);
+        s.chips.forEach((c) => {
+          const el = document.createElement("span");
+          el.className = "chip";
+          el.textContent = c;
+          chipRow.appendChild(el);
         });
-
         renderThumbnails();
       }
 
-      prevButton.addEventListener("click", () => {
-        index = (index - 1 + screens.length) % screens.length;
-        render();
-      });
+      prevButton.addEventListener("click", () => { index = (index - 1 + screens.length) % screens.length; render(); });
+      nextButton.addEventListener("click", () => { index = (index + 1) % screens.length; render(); });
 
-      nextButton.addEventListener("click", () => {
-        index = (index + 1) % screens.length;
-        render();
-      });
-
-      window.addEventListener("keydown", (event) => {
-        if (event.key === "ArrowLeft") {
-          index = (index - 1 + screens.length) % screens.length;
-          render();
-        }
-
-        if (event.key === "ArrowRight") {
-          index = (index + 1) % screens.length;
-          render();
-        }
+      window.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowLeft") { index = (index - 1 + screens.length) % screens.length; render(); }
+        if (e.key === "ArrowRight") { index = (index + 1) % screens.length; render(); }
       });
 
       render();
